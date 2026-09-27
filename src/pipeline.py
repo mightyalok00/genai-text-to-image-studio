@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 
 MODEL_ID = "sd-legacy/stable-diffusion-v1-5"
+MODEL_REVISION = "f03de32"
 
 
 def configure_huggingface_cache() -> str:
@@ -36,6 +37,7 @@ def load_pipeline():
 
     pipe = StableDiffusionPipeline.from_pretrained(
         MODEL_ID,
+        revision=MODEL_REVISION,
         dtype=dtype,
         use_safetensors=True,
     )
