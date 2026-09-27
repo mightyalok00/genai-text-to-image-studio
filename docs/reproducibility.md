@@ -27,7 +27,7 @@ Exact bit-for-bit reproducibility is not guaranteed across different GPU archite
 
 ## Model revision
 
-For stronger experiment reproducibility, record the exact model revision used rather than relying indefinitely on a moving model reference. The current baseline uses revision `f03de32`. The application pins revision `f03de32` of `sd-legacy/stable-diffusion-v1-5` for the documented baseline.
+For stronger experiment reproducibility, record the exact model revision used rather than relying indefinitely on a moving model reference. The application pins revision `f03de32` of `sd-legacy/stable-diffusion-v1-5` for the documented baseline.
 
 ## Environment and cache
 
