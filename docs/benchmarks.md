@@ -27,7 +27,7 @@ Actual time varies with GPU power mode, thermals, background processes, software
 
 ## Measuring the app
 
-The Streamlit app records generation time for every image and displays peak CUDA memory when running on an NVIDIA GPU.
+The local application records generation time for every image and displays peak CUDA memory when running on an NVIDIA GPU.
 
 Use those measurements to build a machine-specific benchmark table rather than treating the baseline above as a universal performance claim.
 
