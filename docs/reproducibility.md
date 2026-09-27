@@ -14,7 +14,6 @@ The project supports reproducible local image generation when the same model rev
 | Diffusers | 0.40.0 |
 | Transformers | 5.17.0 |
 | Accelerate | 1.15.0 |
-| Streamlit | 1.64.0 |
 | Precision | FP16 on CUDA |
 | Model | sd-legacy/stable-diffusion-v1-5 |
 
@@ -42,6 +41,6 @@ Run the unit tests with:
 
 Run the syntax check with:
 
-    python -m compileall -q app.py src tests
+    python -m compileall -q src tests
 
 The CI workflow runs both checks on pushes and pull requests targeting main.
