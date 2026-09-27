@@ -4,10 +4,6 @@ from __future__ import annotations
 
 import os
 
-import torch
-from diffusers import StableDiffusionPipeline
-
-# Pretrained model used for local inference.
 MODEL_ID = "sd-legacy/stable-diffusion-v1-5"
 
 
@@ -23,17 +19,21 @@ def configure_huggingface_cache() -> str:
 
 def get_device() -> str:
     """Use CUDA when an NVIDIA GPU is available."""
+    import torch
+
     return "cuda" if torch.cuda.is_available() else "cpu"
 
 
-def load_pipeline() -> StableDiffusionPipeline:
+def load_pipeline():
     """Load Stable Diffusion with settings suitable for a 6 GB GPU."""
+    import torch
+    from diffusers import StableDiffusionPipeline
+
     configure_huggingface_cache()
 
     device = get_device()
     dtype = torch.float16 if device == "cuda" else torch.float32
 
-    # WHY: `dtype` avoids the deprecated `torch_dtype` argument.
     pipe = StableDiffusionPipeline.from_pretrained(
         MODEL_ID,
         dtype=dtype,
@@ -41,7 +41,6 @@ def load_pipeline() -> StableDiffusionPipeline:
     )
 
     if device == "cuda":
-        # WHY: Offloading lowers peak VRAM usage.
         pipe.enable_model_cpu_offload()
     else:
         pipe = pipe.to("cpu")
