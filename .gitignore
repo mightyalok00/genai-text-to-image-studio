@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Hugging Face / model cache
+huggingface-cache/
+.huggingface/
+*.safetensors
+*.ckpt
+*.bin
+
+# Generated images
+outputs/*
+!outputs/.gitkeep
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

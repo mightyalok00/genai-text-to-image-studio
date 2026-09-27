@@ -1,0 +1,10 @@
+torch==2.14.0
+torchvision
+streamlit
+diffusers
+transformers
+accelerate
+safetensors
+huggingface_hub
+Pillow
+numpy

@@ -1,0 +1,8 @@
+streamlit
+diffusers
+transformers
+accelerate
+safetensors
+huggingface_hub
+Pillow
+numpy
