@@ -91,7 +91,8 @@ genai-text-to-image-studio/
 │   │   └── feature_request.md
 │   ├── pull_request_template.md
 │   └── workflows/
-│       └── python-checks.yml
+│       ├── python-checks.yml
+│       └── manual-check.yml
 ├── .gitignore
 ├── CODE_OF_CONDUCT.md
 ├── CONTRIBUTING.md
@@ -271,7 +272,32 @@ The pretrained Stable Diffusion model is a separate dependency and is governed b
 
 Generated images can contain errors, artifacts, or unintended content. Review outputs before publishing or distributing them. Respect privacy, copyright, model terms, platform policies, and applicable laws.
 
-## ⭐ Why this project\n\nThis repository demonstrates an end-to-end local GenAI workflow rather than a thin API wrapper:\n\n- **Model:** Stable Diffusion v1.5 via Hugging Face Diffusers\n- **Inference:** PyTorch with CUDA/FP16 and CPU offloading\n- **Engineering:** Modular source code with unit tests and validation\n- **Reproducibility:** Fixed seeds, documented environment, and benchmark baseline\n- **Automation:** GitHub Actions for push/PR checks plus a manual workflow trigger\n- **Experimentation:** Jupyter notebook for transparent local inference\n\n## 👤 Maintainer
+## ⭐ Why this project
+
+This repository demonstrates an end-to-end local GenAI workflow rather than a thin API wrapper:
+
+- **Model:** Stable Diffusion v1.5 via Hugging Face Diffusers
+- **Inference:** PyTorch with CUDA/FP16 and CPU offloading
+- **Engineering:** Modular source code with unit tests and validation
+- **Reproducibility:** Fixed seeds, documented environment, model revision, and benchmark baseline
+- **Automation:** GitHub Actions for push/PR checks plus a manual workflow trigger
+- **Experimentation:** Jupyter notebook for transparent local inference
+
+## 🖼️ Example generation
+
+The baseline experiment uses a fixed prompt, seed, resolution, inference steps, and guidance scale so generated examples can be compared across environments.
+
+| Setting | Baseline |
+|---|---|
+| Model | Stable Diffusion v1.5 |
+| Resolution | 512 × 512 |
+| Steps | 25 |
+| Guidance | 7.5 |
+| Seed | 42 |
+| Device | RTX 3050 6 GB |
+
+Generated outputs are intentionally kept out of Git by default. Add selected, license-safe examples under `assets/` if you want to showcase specific generations.
+\n## 👤 Maintainer
 
 **Alok Agarwal**
 
