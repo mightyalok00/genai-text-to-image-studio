@@ -285,7 +285,7 @@ This repository demonstrates an end-to-end local GenAI workflow rather than a th
 
 ## 🖼️ Example generation
 
-The baseline experiment uses a fixed prompt, seed, resolution, inference steps, and guidance scale so generated examples can be compared across environments.
+The benchmark workflow uses a fixed prompt, seed, resolution, inference steps, and guidance scale so generated results can be compared across environments.
 
 | Setting | Baseline |
 |---|---|
@@ -296,7 +296,15 @@ The baseline experiment uses a fixed prompt, seed, resolution, inference steps, 
 | Seed | 42 |
 | Device | RTX 3050 6 GB |
 
-Generated outputs are intentionally kept out of Git by default. Add selected, license-safe examples under `assets/` if you want to showcase specific generations.
+Generated outputs are intentionally kept out of Git by default. Add selected, license-safe examples under `assets/` only after generating them with this project.
+
+Run the benchmark on the target GPU with:
+
+```bash
+python scripts/benchmark.py
+```
+
+The command prints CSV rows for the four documented benchmark cases. Copy the measured values into `docs/benchmarks.md` after the run.
 \n## 👤 Maintainer
 
 **Alok Agarwal**
