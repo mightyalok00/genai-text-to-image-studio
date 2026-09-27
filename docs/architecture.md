@@ -6,20 +6,6 @@ GenAI Text-to-Image Studio separates the user interface, model lifecycle, genera
 
 ## Components
 
-### `app.py`
-
-The local Streamlit entry point. It is an optional user interface around the reusable inference layer.
-
-Responsibilities:
-
-- Page configuration
-- User controls
-- Prompt and negative-prompt input
-- Model resource caching
-- Generation requests
-- Error handling
-- Image preview and PNG download
-
 ### `src/pipeline.py`
 
 Owns model and hardware configuration.
@@ -58,7 +44,7 @@ Contains small application utilities for image serialization, validation, and pe
 Prompt + settings
       │
       ▼
-Streamlit app.py
+inference entry point
       │
       ▼
 generate_image()
@@ -73,7 +59,7 @@ StableDiffusionPipeline
       ▼
 PIL Image
       │
-      ├── Streamlit preview
+      ├── Saved PNG output
       └── PNG bytes
 ```
 
@@ -84,5 +70,4 @@ PIL Image
 - Avoid hard-coded personal filesystem paths.
 - Avoid storing model weights in Git.
 - Keep local GPU setup separate from portable application dependencies.
-- Make the inference function reusable outside Streamlit.
 - Keep the project local-first; hosting is not required for the core inference engine.
