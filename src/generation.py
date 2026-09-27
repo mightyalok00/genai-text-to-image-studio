@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import torch
 from PIL import Image
 
 
@@ -17,6 +16,8 @@ def generate_image(
     height: int = 512,
 ) -> Image.Image:
     """Generate one image with a reproducible or random seed."""
+    import torch
+
     if seed >= 0:
         generator_device = "cuda" if torch.cuda.is_available() else "cpu"
         generator = torch.Generator(
