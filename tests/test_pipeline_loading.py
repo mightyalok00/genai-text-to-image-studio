@@ -6,13 +6,16 @@ import types
 from src import pipeline
 
 
+class FakeCuda:
+    @staticmethod
+    def is_available():
+        return True
+
+
 class FakeTorch:
     float16 = "float16"
     float32 = "float32"
-
-    @staticmethod
-    def cuda_is_available():
-        return True
+    cuda = FakeCuda()
 
 
 class FakePipeline:
