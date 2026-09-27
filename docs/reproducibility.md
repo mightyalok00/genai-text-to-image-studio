@@ -15,7 +15,7 @@ The project supports reproducible local image generation when the same model rev
 | Transformers | 5.17.0 |
 | Accelerate | 1.15.0 |
 | Precision | FP16 on CUDA |
-| Model | sd-legacy/stable-diffusion-v1-5 |
+| Model | sd-legacy/stable-diffusion-v1-5 @ `f03de32` |
 
 The CI test environment uses pinned direct dependency versions in requirements-ci.txt. The local CUDA environment is kept separate because the CUDA-specific PyTorch wheel depends on the target platform and driver stack.
 
@@ -27,7 +27,7 @@ Exact bit-for-bit reproducibility is not guaranteed across different GPU archite
 
 ## Model revision
 
-For stronger experiment reproducibility, record the exact model revision used rather than relying indefinitely on a moving model reference. The application currently uses sd-legacy/stable-diffusion-v1-5.
+For stronger experiment reproducibility, record the exact model revision used rather than relying indefinitely on a moving model reference. The current baseline uses revision `f03de32`. The application pins revision `f03de32` of `sd-legacy/stable-diffusion-v1-5` for the documented baseline.
 
 ## Environment and cache
 
