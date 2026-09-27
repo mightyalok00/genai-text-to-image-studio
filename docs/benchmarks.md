@@ -9,6 +9,7 @@ This document records the local development baseline for the current Stable Diff
 - Precision: FP16
 - PyTorch: 2.14.0+cu126
 - Model: `sd-legacy/stable-diffusion-v1-5`
+- Model revision: `f03de32`
 
 ## Baseline generation
 
@@ -21,6 +22,7 @@ A representative local notebook run produced an image in approximately **7 secon
 | Guidance scale | 7.5 |
 | Seed | 42 |
 | Precision | FP16 |
+| Model revision | f03de32 |
 | Device | RTX 3050 6 GB |
 
 Actual time varies with GPU power mode, thermals, background processes, software versions, and memory pressure.
