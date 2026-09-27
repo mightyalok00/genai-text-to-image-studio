@@ -1,39 +1,58 @@
-# Deployment
+# Local Execution
 
 ## Current status
 
-The project is currently **local-first**.
+This repository is a **local-first text-to-image inference project**.
 
-The previous Streamlit Community Cloud deployment has been removed. No public hosted demo is maintained by this repository at this time.
+There is no hosted application or web UI requirement. The core workflow runs directly on the developer's machine using Python, PyTorch, Hugging Face Diffusers, and Stable Diffusion v1.5.
 
-The recommended development workflow is to run the application locally on hardware with sufficient CPU RAM and, ideally, an NVIDIA GPU with enough VRAM for the selected Stable Diffusion configuration.
+## Setup
 
-## Local execution
+Create and activate a virtual environment:
 
-Create and activate a virtual environment, install a compatible PyTorch build, then install the application dependencies:
+```bash
+python -m venv .venv
+```
+
+Windows PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Git Bash:
+
+```bash
+source .venv/Scripts/activate
+```
+
+Install a PyTorch build appropriate for the local CPU/GPU, then install the project dependencies:
 
 ```bash
 python -m pip install -r requirements.txt
-streamlit run app.py
 ```
 
-The local interface is normally available at:
+## Run the experiment notebook
 
-```text
-http://localhost:8501
-```
-
-For CUDA-enabled development, verify the GPU before starting the application:
+Start Jupyter:
 
 ```bash
-python -c "import torch; print(torch.__version__); print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU')"
+python -m jupyter notebook
 ```
+
+Open:
+
+```text
+notebooks/text_to_image_experiments.ipynb
+```
+
+The notebook demonstrates environment verification, Hugging Face cache configuration, model loading, prompt configuration, inference, and image output.
 
 ## GPU requirements
 
-Stable Diffusion v1.5 is substantially more resource-intensive than a typical CPU-only application.
+Stable Diffusion v1.5 is resource-intensive.
 
-For a GPU with approximately 6 GB VRAM, begin with:
+For approximately 6 GB VRAM:
 
 | Setting | Starting point |
 |---|---:|
@@ -43,41 +62,33 @@ For a GPU with approximately 6 GB VRAM, begin with:
 | Precision | FP16 |
 | Offloading | Enabled |
 
-Higher resolutions and inference steps can increase VRAM usage and generation time.
-
 ## Environment variables
 
-The application respects:
+The project respects:
 
 - `HF_HOME`
 - `HF_HUB_CACHE`
 
-These can be used to move model downloads to a larger drive.
+These can be used to place model downloads on a larger drive.
 
-No application API key is required for the current local inference workflow.
+## Reproducibility
 
-## If public hosting is added later
+For repeatable experiments:
 
-A future hosted deployment should be treated as a separate deployment target rather than assuming that a general-purpose CPU host can run the current model efficiently.
+- Pin the software environment.
+- Keep the model revision fixed.
+- Record resolution, steps, guidance scale, and seed.
+- Use the same hardware when comparing performance.
+- Keep generated outputs outside Git unless they are intentionally selected as project assets.
 
-Before deploying:
+## Security
 
-- [ ] Confirm CPU RAM and GPU VRAM capacity.
-- [ ] Confirm the target's PyTorch/CUDA compatibility.
-- [ ] Confirm model access and licensing requirements.
-- [ ] Do not upload model weights to Git.
-- [ ] Do not commit secrets.
-- [ ] Test a 512×512 generation first.
-- [ ] Configure model caching where supported.
-- [ ] Review generated-content and platform policies.
-- [ ] Record the deployment environment for reproducibility.
+Do not commit:
 
-## Containerization
-
-The existing local application can be containerized around the Streamlit entry point:
-
-```text
-streamlit run app.py --server.address=0.0.0.0 --server.port=<PORT>
-```
-
-A production container should install a PyTorch build appropriate for the target GPU/runtime rather than assuming the developer's local CUDA environment.
+- API keys
+- access tokens
+- `.env` files
+- virtual environments
+- Hugging Face caches
+- model weights
+- private generated data
