@@ -27,6 +27,14 @@ A representative local notebook run produced an image in approximately **7 secon
 
 Actual time varies with GPU power mode, thermals, background processes, software versions, and memory pressure.
 
+## Reproducible benchmark runner
+
+Run the benchmark from the repository root:
+
+    python scripts/benchmark.py
+
+The runner uses the fixed prompt and seed from the documented baseline, performs a short warm-up, measures one timed generation per case, and reports peak CUDA memory when available. Run it on the target GPU rather than CI so the results represent the actual inference hardware.
+
 ## Measuring local inference
 
 The notebook workflow can record generation time and inspect peak CUDA memory when running on an NVIDIA GPU.
