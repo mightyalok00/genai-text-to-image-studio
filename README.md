@@ -1,22 +1,20 @@
 # 🎨 GenAI Text-to-Image Studio
 
 [![Python](https://img.shields.io/badge/Python-3.14%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-CUDA%20ready-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Diffusers](https://img.shields.io/badge/Hugging%20Face-Diffusers-yellow?logo=huggingface&logoColor=black)](https://huggingface.co/docs/diffusers)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python checks](https://github.com/mightyalok00/genai-text-to-image-studio/actions/workflows/python-checks.yml/badge.svg)](https://github.com/mightyalok00/genai-text-to-image-studio/actions/workflows/python-checks.yml)
 
-A modular **local text-to-image GenAI application** built with Python, PyTorch, Hugging Face Diffusers, Stable Diffusion v1.5, and Streamlit.
+A modular **local text-to-image GenAI application** built with Python, PyTorch, Hugging Face Diffusers, and Stable Diffusion v1.5.
 
 Generate images from natural-language prompts while controlling inference steps, guidance scale, seed, negative prompts, and resolution. The application is designed for local NVIDIA GPU inference and includes CPU offloading to reduce peak VRAM usage.
 
 > **Project scope:** inference-focused text-to-image generation. This repository does not train or clone a foundation model.
 
-## 🚀 Live Demo
+## 🎯 Project status
 
-**Try the deployed Streamlit app:**  
-👉 https://alok-text-to-image.streamlit.app/
+**Local-first GenAI project.** The previous Streamlit Community Cloud deployment has been intentionally removed. The repository keeps the Streamlit interface for local development and experimentation.
 
 ## ✨ Features
 
@@ -31,7 +29,7 @@ Generate images from natural-language prompts while controlling inference steps,
 - 🧠 Accelerate CPU offloading for lower peak VRAM usage
 - 💻 CPU fallback
 - 📥 PNG download
-- ♻️ Streamlit model caching to avoid repeated model initialization
+- ♻️ Model caching to avoid repeated model initialization
 - ⏱️ Per-generation performance metrics
 - 🧠 Peak CUDA VRAM reporting
 - 🎲 Random prompt presets
@@ -77,7 +75,7 @@ See [docs/architecture.md](docs/architecture.md) for the component breakdown.
 
 ```text
 genai-text-to-image-studio/
-├── app.py                         # Streamlit application
+├── app.py                         # Local Streamlit application
 ├── src/
 │   ├── __init__.py
 │   ├── generation.py              # Image generation logic
@@ -110,7 +108,7 @@ genai-text-to-image-studio/
 └── requirements-local-cuda.txt
 ```
 
-## 🚀 Quick start
+## 🚀 Quick start — local application
 
 ### 1. Clone
 
@@ -253,7 +251,7 @@ The notebook in `notebooks/text_to_image_experiments.ipynb` demonstrates the sam
 7. Generate an image
 8. Display and save the result
 
-The notebook is intended for experimentation and reproducibility; the Streamlit application is the primary user interface.
+The notebook is intended for experimentation and reproducibility. The Streamlit application remains a local interface and is not currently hosted as a public demo.
 
 ## 🔐 Security and repository hygiene
 
