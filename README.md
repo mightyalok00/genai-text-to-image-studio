@@ -44,9 +44,6 @@ Notebook prompt
 Generation parameters
     │
     ▼
-Generation parameters
-    │
-    ▼
 src/generation.py
     │
     ▼
@@ -163,7 +160,7 @@ Open the Jupyter interface in your browser and run the notebook cells.
 
 ## ⚙️ Hugging Face cache
 
-The application uses the standard Hugging Face cache by default.
+The project uses the standard Hugging Face cache by default.
 
 On Windows, you can optionally move model downloads to another drive:
 
@@ -208,7 +205,7 @@ The model is downloaded at runtime through Hugging Face Diffusers rather than st
 
 The notebook workflow can be used to measure generation time and inspect CUDA memory usage for local experiments.
 
-A representative local RTX 3050 6 GB baseline is documented in [docs/benchmarks.md](docs/benchmarks.md). Use the app's live metrics to build hardware-specific comparisons rather than assuming the baseline is universal.
+A representative local RTX 3050 6 GB baseline is documented in [docs/benchmarks.md](docs/benchmarks.md). Use the notebook's local measurements to build hardware-specific comparisons rather than assuming the baseline is universal.
 
 | Metric | Supported in local workflow |
 |---|---|
@@ -234,7 +231,7 @@ CI installs pinned test dependencies from `requirements-ci.txt` and runs the sam
 
 ## 📓 Experiments
 
-The notebook in `notebooks/text_to_image_experiments.ipynb` demonstrates the same inference flow used by the application:
+The notebook in `notebooks/text_to_image_experiments.ipynb` demonstrates the same inference flow exposed by the reusable `src/` inference components:
 
 1. Verify the Python/CUDA environment
 2. Configure the Hugging Face cache
@@ -274,7 +271,7 @@ The pretrained Stable Diffusion model is a separate dependency and is governed b
 
 Generated images can contain errors, artifacts, or unintended content. Review outputs before publishing or distributing them. Respect privacy, copyright, model terms, platform policies, and applicable laws.
 
-## 👤 Maintainer
+## ⭐ Why this project\n\nThis repository demonstrates an end-to-end local GenAI workflow rather than a thin API wrapper:\n\n- **Model:** Stable Diffusion v1.5 via Hugging Face Diffusers\n- **Inference:** PyTorch with CUDA/FP16 and CPU offloading\n- **Engineering:** Modular source code with unit tests and validation\n- **Reproducibility:** Fixed seeds, documented environment, and benchmark baseline\n- **Automation:** GitHub Actions for push/PR checks plus a manual workflow trigger\n- **Experimentation:** Jupyter notebook for transparent local inference\n\n## 👤 Maintainer
 
 **Alok Agarwal**
 
