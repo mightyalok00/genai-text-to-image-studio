@@ -14,12 +14,11 @@ Generate images from natural-language prompts while controlling inference steps,
 
 ## 🎯 Project status
 
-**Local-first GenAI project.** The previous Streamlit Community Cloud deployment has been intentionally removed. The repository keeps the Streamlit interface for local development and experimentation.
+**Local-first GenAI project.** The project is designed for local inference and experimentation.
 
 ## ✨ Features
 
 - 🖼️ Text-to-image generation
-- 🖼️ Generation gallery and session history
 - ✍️ Positive and negative prompts
 - 🎛️ Inference-step control
 - 🎚️ CFG / guidance-scale control
@@ -32,8 +31,6 @@ Generate images from natural-language prompts while controlling inference steps,
 - ♻️ Model caching to avoid repeated model initialization
 - ⏱️ Per-generation performance metrics
 - 🧠 Peak CUDA VRAM reporting
-- 🎲 Random prompt presets
-- 🔁 Restore prompts and settings from generation history
 - 🧩 Modular Python source code
 - 📓 Reproducible Jupyter experiment notebook
 - 🔒 No API key required for local inference
@@ -44,7 +41,7 @@ Generate images from natural-language prompts while controlling inference steps,
 User prompt
     │
     ▼
-Streamlit UI
+Inference interface
     │
     ▼
 Generation parameters
@@ -65,7 +62,7 @@ src/pipeline.py
             ▼
       Generated PIL Image
             │
-            ├── Preview in Streamlit
+            ├── Saved output
             └── Download as PNG
 ```
 
@@ -75,7 +72,6 @@ See [docs/architecture.md](docs/architecture.md) for the component breakdown.
 
 ```text
 genai-text-to-image-studio/
-├── app.py                         # Local Streamlit application
 ├── src/
 │   ├── __init__.py
 │   ├── generation.py              # Image generation logic
@@ -158,13 +154,13 @@ python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', to
 ### 6. Run
 
 ```bash
-streamlit run app.py
+python -m jupyter notebook
 ```
 
 Open the local URL printed by Streamlit, normally:
 
 ```text
-http://localhost:8501
+the Jupyter interface
 ```
 
 ## ⚙️ Hugging Face cache
@@ -233,7 +229,7 @@ Run locally with:
 
 ```bash
 python -m pytest -q
-python -m compileall -q app.py src tests
+python -m compileall -q src tests
 ```
 
 CI installs pinned test dependencies from `requirements-ci.txt` and runs the same tests and compile checks on pushes and pull requests. See [docs/reproducibility.md](docs/reproducibility.md) for the tested environment and reproducibility limitations.
@@ -251,7 +247,7 @@ The notebook in `notebooks/text_to_image_experiments.ipynb` demonstrates the sam
 7. Generate an image
 8. Display and save the result
 
-The notebook is intended for experimentation and reproducibility. The Streamlit application remains a local interface and is not currently hosted as a public demo.
+The notebook is the primary interactive interface for experimentation and reproducibility.
 
 ## 🔐 Security and repository hygiene
 
