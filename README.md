@@ -21,6 +21,7 @@ Generate images from natural-language prompts while controlling inference steps,
 ## ✨ Features
 
 - 🖼️ Text-to-image generation
+- 🖼️ Generation gallery and session history
 - ✍️ Positive and negative prompts
 - 🎛️ Inference-step control
 - 🎚️ CFG / guidance-scale control
@@ -31,6 +32,10 @@ Generate images from natural-language prompts while controlling inference steps,
 - 💻 CPU fallback
 - 📥 PNG download
 - ♻️ Streamlit model caching to avoid repeated model initialization
+- ⏱️ Per-generation performance metrics
+- 🧠 Peak CUDA VRAM reporting
+- 🎲 Random prompt presets
+- 🔁 Restore prompts and settings from generation history
 - 🧩 Modular Python source code
 - 📓 Reproducible Jupyter experiment notebook
 - 🔒 No API key required for local inference
@@ -86,7 +91,9 @@ genai-text-to-image-studio/
 │   └── .gitkeep
 ├── docs/
 │   ├── architecture.md
-│   └── deployment.md
+│   ├── benchmarks.md
+│   ├── deployment.md
+│   └── reproducibility.md
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
 │   │   ├── bug_report.md
@@ -204,6 +211,21 @@ The model is downloaded at runtime through Hugging Face Diffusers rather than st
 - [Stable Diffusion v1.5 model card](https://huggingface.co/sd-legacy/stable-diffusion-v1-5)
 - [Diffusers documentation](https://huggingface.co/docs/diffusers)
 - [PyTorch](https://pytorch.org/)
+
+## 📊 Performance
+
+The application measures generation time and peak CUDA memory for each generated image.
+
+A representative local RTX 3050 6 GB baseline is documented in [docs/benchmarks.md](docs/benchmarks.md). Use the app's live metrics to build hardware-specific comparisons rather than assuming the baseline is universal.
+
+| Metric | App reports |
+|---|---|
+| Generation time | Yes |
+| Peak CUDA VRAM | Yes, when CUDA is available |
+| Inference steps | Yes |
+| Seed | Yes |
+| Resolution | Yes |
+| Guidance scale | Yes |
 
 ## 🧪 Testing and reproducibility
 
