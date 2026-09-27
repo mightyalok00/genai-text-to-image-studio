@@ -6,15 +6,15 @@
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python checks](https://github.com/mightyalok00/genai-text-to-image-studio/actions/workflows/python-checks.yml/badge.svg)](https://github.com/mightyalok00/genai-text-to-image-studio/actions/workflows/python-checks.yml)
 
-A modular **local text-to-image GenAI application** built with Python, PyTorch, Hugging Face Diffusers, and Stable Diffusion v1.5.
+A modular **local text-to-image GenAI project** built with Python, PyTorch, Hugging Face Diffusers, Jupyter, and Stable Diffusion v1.5.
 
-Generate images from natural-language prompts while controlling inference steps, guidance scale, seed, negative prompts, and resolution. The application is designed for local NVIDIA GPU inference and includes CPU offloading to reduce peak VRAM usage.
+Generate images from natural-language prompts while controlling inference steps, guidance scale, seed, negative prompts, and resolution. The project is designed for local NVIDIA GPU inference and includes CPU offloading to reduce peak VRAM usage.
 
 > **Project scope:** inference-focused text-to-image generation. This repository does not train or clone a foundation model.
 
 ## 🎯 Project status
 
-**Local-first GenAI project.** The project is designed for local inference and experimentation.
+**Local-first GenAI project.** The primary interactive workflow is the Jupyter experiment notebook; the reusable inference engine lives under `src/`.
 
 ## ✨ Features
 
@@ -27,10 +27,10 @@ Generate images from natural-language prompts while controlling inference steps,
 - ⚡ CUDA acceleration with FP16
 - 🧠 Accelerate CPU offloading for lower peak VRAM usage
 - 💻 CPU fallback
-- 📥 PNG download
+- 💾 PNG output saving
 - ♻️ Model caching to avoid repeated model initialization
-- ⏱️ Per-generation performance metrics
-- 🧠 Peak CUDA VRAM reporting
+- ⏱️ Reproducible generation timing in experiments
+- 🧠 CUDA/VRAM-aware local configuration
 - 🧩 Modular Python source code
 - 📓 Reproducible Jupyter experiment notebook
 - 🔒 No API key required for local inference
@@ -38,10 +38,10 @@ Generate images from natural-language prompts while controlling inference steps,
 ## 🧱 Architecture
 
 ```text
-User prompt
+Notebook prompt
     │
     ▼
-Inference interface
+Generation parameters
     │
     ▼
 Generation parameters
@@ -63,7 +63,7 @@ src/pipeline.py
       Generated PIL Image
             │
             ├── Saved output
-            └── Download as PNG
+            └── Saved PNG output
 ```
 
 See [docs/architecture.md](docs/architecture.md) for the component breakdown.
@@ -101,10 +101,12 @@ genai-text-to-image-studio/
 ├── LICENSE
 ├── README.md
 ├── requirements.txt
-└── requirements-local-cuda.txt
+├── requirements-local-cuda.txt
+├── requirements-test.txt
+└── requirements-ci.txt
 ```
 
-## 🚀 Quick start — local application
+## 🚀 Quick start — local inference
 
 ### 1. Clone
 
@@ -157,11 +159,7 @@ python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA:', to
 python -m jupyter notebook
 ```
 
-Open the local URL printed by Streamlit, normally:
-
-```text
-the Jupyter interface
-```
+Open the Jupyter interface in your browser and run the notebook cells.
 
 ## ⚙️ Hugging Face cache
 
@@ -194,7 +192,7 @@ Higher resolutions and more inference steps increase memory use and generation t
 
 ## 🤖 Model
 
-The application loads:
+The project loads:
 
 ```text
 sd-legacy/stable-diffusion-v1-5
@@ -208,11 +206,11 @@ The model is downloaded at runtime through Hugging Face Diffusers rather than st
 
 ## 📊 Performance
 
-The application measures generation time and peak CUDA memory for each generated image.
+The notebook workflow can be used to measure generation time and inspect CUDA memory usage for local experiments.
 
 A representative local RTX 3050 6 GB baseline is documented in [docs/benchmarks.md](docs/benchmarks.md). Use the app's live metrics to build hardware-specific comparisons rather than assuming the baseline is universal.
 
-| Metric | App reports |
+| Metric | Supported in local workflow |
 |---|---|
 | Generation time | Yes |
 | Peak CUDA VRAM | Yes, when CUDA is available |
@@ -223,7 +221,7 @@ A representative local RTX 3050 6 GB baseline is documented in [docs/benchmarks.
 
 ## 🧪 Testing and reproducibility
 
-The repository includes unit tests for generation parameters, seed handling, Hugging Face cache configuration, device detection, and PNG output.
+The repository includes unit tests for generation parameters, seed handling, Hugging Face cache configuration, device detection, validation, and PNG output.
 
 Run locally with:
 
@@ -247,7 +245,7 @@ The notebook in `notebooks/text_to_image_experiments.ipynb` demonstrates the sam
 7. Generate an image
 8. Display and save the result
 
-The notebook is the primary interactive interface for experimentation and reproducibility.
+The notebook is the primary interactive interface for experimentation and reproducibility; `src/` provides the reusable inference components.
 
 ## 🔐 Security and repository hygiene
 
