@@ -12,6 +12,11 @@ Generate images from natural-language prompts while controlling inference steps,
 
 > **Project scope:** inference-focused text-to-image generation. This repository does not train or clone a foundation model.
 
+## 🚀 Live Demo
+
+**Try the deployed Streamlit app:**  
+👉 https://alok-text-to-image.streamlit.app/
+
 ## ✨ Features
 
 - 🖼️ Text-to-image generation
@@ -112,7 +117,7 @@ Windows PowerShell:
 
 ```powershell
 python -m venv .venv
-.venv\Scripts\Activate.ps1
+.venv\\Scripts\\Activate.ps1
 python -m pip install --upgrade pip
 ```
 
@@ -163,8 +168,8 @@ The application uses the standard Hugging Face cache by default.
 On Windows, you can optionally move model downloads to another drive:
 
 ```powershell
-[Environment]::SetEnvironmentVariable("HF_HOME", "D:\huggingface-cache", "User")
-[Environment]::SetEnvironmentVariable("HF_HUB_CACHE", "D:\huggingface-cache\hub", "User")
+[Environment]::SetEnvironmentVariable("HF_HOME", "D:\\huggingface-cache", "User")
+[Environment]::SetEnvironmentVariable("HF_HUB_CACHE", "D:\\huggingface-cache\\hub", "User")
 ```
 
 Restart your terminal/VS Code after changing persistent environment variables.
