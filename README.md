@@ -5,6 +5,7 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-CUDA%20ready-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Diffusers](https://img.shields.io/badge/Hugging%20Face-Diffusers-yellow?logo=huggingface&logoColor=black)](https://huggingface.co/docs/diffusers)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python checks](https://github.com/mightyalok00/genai-text-to-image-studio/actions/workflows/python-checks.yml/badge.svg)](https://github.com/mightyalok00/genai-text-to-image-studio/actions/workflows/python-checks.yml)
 
 A modular **local text-to-image GenAI application** built with Python, PyTorch, Hugging Face Diffusers, Stable Diffusion v1.5, and Streamlit.
 
