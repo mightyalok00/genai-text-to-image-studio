@@ -25,9 +25,9 @@ A representative local notebook run produced an image in approximately **7 secon
 
 Actual time varies with GPU power mode, thermals, background processes, software versions, and memory pressure.
 
-## Measuring the app
+## Measuring local inference
 
-The local application records generation time for every image and displays peak CUDA memory when running on an NVIDIA GPU.
+The notebook workflow can record generation time and inspect peak CUDA memory when running on an NVIDIA GPU.
 
 Use those measurements to build a machine-specific benchmark table rather than treating the baseline above as a universal performance claim.
 
