@@ -225,7 +225,7 @@ Run locally with:
 
 ```bash
 python -m pytest -q
-python -m compileall -q src tests
+python -m compileall -q src tests scripts
 ```
 
 CI installs pinned test dependencies from `requirements-ci.txt` and runs the same tests and compile checks on pushes and pull requests. See [docs/reproducibility.md](docs/reproducibility.md) for the tested environment and reproducibility limitations.
