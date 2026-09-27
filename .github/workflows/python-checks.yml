@@ -29,4 +29,4 @@ jobs:
         run: python -m pytest -q
 
       - name: Compile Python sources
-        run: python -m compileall -q src tests
+        run: python -m compileall -q src tests scripts
