@@ -1,6 +1,5 @@
 torch==2.14.0
 torchvision
-streamlit
 diffusers
 transformers
 accelerate
