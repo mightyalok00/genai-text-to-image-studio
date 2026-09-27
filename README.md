@@ -204,6 +204,19 @@ The model is downloaded at runtime through Hugging Face Diffusers rather than st
 - [Diffusers documentation](https://huggingface.co/docs/diffusers)
 - [PyTorch](https://pytorch.org/)
 
+## 🧪 Testing and reproducibility
+
+The repository includes unit tests for generation parameters, seed handling, Hugging Face cache configuration, device detection, and PNG output.
+
+Run locally with:
+
+```bash
+python -m pytest -q
+python -m compileall -q app.py src tests
+```
+
+CI installs pinned test dependencies from `requirements-ci.txt` and runs the same tests and compile checks on pushes and pull requests. See [docs/reproducibility.md](docs/reproducibility.md) for the tested environment and reproducibility limitations.
+
 ## 📓 Experiments
 
 The notebook in `notebooks/text_to_image_experiments.ipynb` demonstrates the same inference flow used by the application:
